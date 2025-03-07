@@ -1,0 +1,27 @@
+[
+    {
+      "fullname": "Masood Khan",
+      "email": "masoodkhan@example.com",
+      "password": "123",
+      "phone": "1234567890"
+    },
+    {
+      "fullname": "Sofia Aamir",
+      "email": "sofia@example.com",
+      "password": "456",
+      "phone": "0987654321"
+    },
+    {
+      "fullname": "Irfan",
+      "email": "irfan@example.com",
+      "password": "789",
+      "phone": "0987654321"
+    },
+    {
+      "fullname": "Ahtisham",
+      "email": "ahtisham@example.com",
+      "password": "111",
+      "phone": "0987654321"
+    }
+  ]
+  

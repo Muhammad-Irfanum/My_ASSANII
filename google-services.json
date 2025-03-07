@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "246316190471",
+    "project_id": "aasani-fe829",
+    "storage_bucket": "aasani-fe829.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246316190471:android:defecaa452f39e460053a2",
+        "android_client_info": {
+          "package_name": "com.anonymous.AASANI"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCic0MQIIEUqMEsaEKwmttNE7VFcIeQNbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

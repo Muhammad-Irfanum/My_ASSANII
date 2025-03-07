@@ -1,0 +1,57 @@
+{
+  "expo": {
+    "name": "AASANI",
+    "slug": "AASANI",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/logo.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/appicon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.anonymous.AASANI"
+    },
+    "web": {
+      "favicon": "./assets/images/logo.png",
+       "bundler": "metro"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0cb80f92-bd35-4783-be36-bb7e6d145d34"
+      }
+    },
+    "doctor": {
+    "reactNativeDirectoryCheck": {
+      "exclude": ["expo-checkbox", "expo-app-loading"]
+    }
+  },
+  "plugins": [
+    [
+      "expo-camera",
+      {
+        "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+        "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+        "recordAudioAndroid": true
+      }
+    ],
+    [
+      "expo-image-picker",
+      {
+        "photosPermission": "The app accesses your photos to let you share them with your friends."
+      }
+    ]
+
+  ]
+  }
+}
