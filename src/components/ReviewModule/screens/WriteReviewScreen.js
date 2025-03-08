@@ -1,11 +1,11 @@
 // src/components/ReviewModule/screens/WriteReviewScreen.js
 import React, { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  TextInput, 
-  TouchableOpacity, 
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
   ScrollView,
   SafeAreaView,
   KeyboardAvoidingView,
@@ -20,26 +20,26 @@ const WriteReviewScreen = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const { serviceId, serviceName } = route.params || {};
-  
+
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState('');
   const { submitReview, isLoading } = useSubmitReview();
-  
+
   const handleRatingPress = (selectedRating) => {
     setRating(selectedRating);
   };
-  
+
   const handleSubmit = async () => {
     if (rating === 0) {
       Alert.alert('Rating Required', 'Please select a rating before submitting');
       return;
     }
-    
+
     if (review.trim().length < 5) {
       Alert.alert('Review Required', 'Please write a review before submitting');
       return;
     }
-    
+
     navigation.navigate('ReviewPreview', {
       rating,
       review,
@@ -47,7 +47,7 @@ const WriteReviewScreen = () => {
       serviceName,
     });
   };
-  
+
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
@@ -73,7 +73,10 @@ const WriteReviewScreen = () => {
               ))}
             </View>
           </View>
-          
+
+
+
+
           <View style={styles.reviewContainer}>
             <Text style={styles.label}>Review:</Text>
             <TextInput
@@ -85,7 +88,7 @@ const WriteReviewScreen = () => {
               maxLength={500}
             />
           </View>
-          
+
           <TouchableOpacity
             style={[styles.submitButton, (rating === 0 || isLoading) && styles.submitButtonDisabled]}
             onPress={handleSubmit}
@@ -102,7 +105,7 @@ const WriteReviewScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1BBFB8',
+    backgroundColor: '#0AD1C8',
   },
   keyboardAvoid: {
     flex: 1,
@@ -111,12 +114,13 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   ratingContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
     borderRadius: 12,
     padding: 16,
     marginBottom: 16,
   },
   label: {
+    color: '#000',
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 12,
@@ -129,7 +133,7 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   reviewContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
     borderRadius: 12,
     padding: 16,
     marginBottom: 24,
@@ -140,16 +144,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   submitButton: {
-    backgroundColor: '#fff',
+    width: '50%',
+    alignSelf: 'center',
+    backgroundColor: '#80ED99',
     borderRadius: 24,
     paddingVertical: 12,
     alignItems: 'center',
   },
   submitButtonDisabled: {
-    opacity: 0.7,
+    opacity: 0.5,
   },
   submitButtonText: {
-    color: '#1BBFB8',
+    color: 'ffffff',
     fontWeight: 'bold',
     fontSize: 16,
   },

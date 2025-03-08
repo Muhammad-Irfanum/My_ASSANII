@@ -29,7 +29,7 @@ const ReviewPreviewScreen = () => {
   // Log auth state when component loads
   useEffect(() => {
     console.log('AUTH STATE:', JSON.stringify(auth));
-    console.log('USER:', user ? JSON.stringify(user) : 'No user data');
+    console.log('USER:', user ? JSON.stringify(user) : 'No user data ');
     console.log('IS AUTHENTICATED:', isAuthenticated);
   }, [auth, user, isAuthenticated]);
 
@@ -66,7 +66,7 @@ const ReviewPreviewScreen = () => {
     }
     
     if (isAuthenticated && user) {
-      return user.name || user.displayName || 'User';
+      return user.fullname || user.displayName || 'User';
     }
     
     return 'Guest User';
@@ -103,16 +103,16 @@ const ReviewPreviewScreen = () => {
       
       // Log auth state just before creating user data
       console.log('AUTH STATE PRE-SUBMISSION:', JSON.stringify(auth));
-      console.log('USER PRE-SUBMISSION:', user ? JSON.stringify(user) : 'No user data');
+      console.log('USER PRE-SUBMISSION:', user ? JSON.stringify(user) : 'No user data ');
       
       // Add user data if authenticated and not anonymous
       if (isAuthenticated && user && !anonymous) {
         // Make sure to include all user fields
         reviewData.user = {
           id: user.id || user.uid || "user-" + Date.now(),
-          name: user.name || user.displayName || "User",
-          isVerified: true,
-          avatar: user.avatar || user.photoURL || null
+          name: user.fullname || user.name || user.displayName || "User",
+          isVerified: !!user.isverified,
+          avatar: user.profileImage || user.avatar || user.photoURL || null,
         };
         
         // Log the user object we're sending
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   previewCard: {
-    backgroundColor: '#fff',
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
     borderRadius: 12,
     padding: 16,
     marginBottom: 24,
@@ -289,6 +289,8 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   postButton: {
+    width: '50%',
+    alignSelf: 'center',
     backgroundColor: '#fff',
     borderRadius: 24,
     paddingVertical: 12,
@@ -304,11 +306,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   editButton: {
+    width: '50%',
+    alignSelf: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 24,
     paddingVertical: 12,
     alignItems: 'center',
+    marginBottom: 16,
   },
   editButtonText: {
-    color: '#fff',
+    color: '#1bbfb8',
+    fontWeight: 'bold',
     fontSize: 16,
   },
 });

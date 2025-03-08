@@ -37,16 +37,18 @@ export const submitReviewAction = createAsyncThunk(
 
       console.log('AUTH STATE in submit Review:', JSON.stringify(auth));
       console.log('USER in submit Review:', user ? JSON.stringify(user) : 'No user data');
+      console.log('User object from auth:', JSON.stringify(user));
 
       // If user data is not provided but user is authenticated, add it here
+      
       if (!reviewData.user && isAuthenticated && user && !reviewData.anonymous) {
         reviewData.user = {
-          id: user.id || user.uid || `user-${Date.now()}`,
-          name: user.name || user.displayName || 'User',
-          isVerified: true,
-          avatar: user.avatar || user.photoURL || null
-        };
-        
+          id: user.uid || user.id || `user-${Date.now()}`,
+          // Change from user.fullname to user.fullname (verify case sensitivity)
+          name: user.fullname || user.displayName || user.name || "User",
+          isVerified: !!user.isverified,
+          avatar: user.profileImage || user.photoURL || user.avatar || null,
+        }
         console.log('Added user data in thunk:', JSON.stringify(reviewData.user));
       }
       

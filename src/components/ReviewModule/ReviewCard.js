@@ -30,13 +30,14 @@ const ReviewCard = ({
         <View>
           <Text style={styles.userName}>{review.user.name}</Text>
           {review.user.isVerified && (
-            <Text style={styles.verifiedBadge}>Verified Buyer</Text>
+            
+            <Text style={styles.verifiedBadge}>Verified  </Text>
           )}
         </View>
         {renderStars(review.rating)}
       </View>
       
-      <Text style={styles.reviewTitle}>Good</Text>
+      
       <Text style={styles.reviewText}>{review.comment}</Text>
       
       <View style={styles.footer}>
@@ -67,19 +68,14 @@ const ReviewCard = ({
         <Text style={styles.dateText}>{review.date}</Text>
       </View>
       
-      {showRecommended && review.isRecommended && (
-        <View style={styles.recommendedContainer}>
-          <Ionicons name="checkmark-circle" size={16} color="#1BBFB8" />
-          <Text style={styles.recommendedText}>Recommended</Text>
-        </View>
-      )}
+    
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
     borderRadius: 12,
     padding: 16,
     marginHorizontal: 16,

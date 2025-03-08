@@ -152,22 +152,22 @@ export const reviewsApi = {
   
       // Use the provided user data or default to guest
       // Log both the reviewData.user and defaultUser to debug
-      console.log('Review user data:', reviewData.user);
-      console.log('Default user data:', defaultUser);
+      // console.log('Review user data:', reviewData.user);
+      // console.log('Default user data:', defaultUser);
       
-      const user = reviewData.user || defaultUser;
-      console.log('Final user data used:', user);
-  
-      // Create new review object
+      // Get user data from reviewData or use default
+      const user = reviewData.user || defaultUser
+
+      // Create new review object with safe user information
       const newReview = {
         id: `review-${Date.now()}`,
         serviceId: reviewData.serviceId,
-        userId: user.id,
+        userId: user.id || defaultUser.id,
         user: {
-          id: user.id,
-          name: reviewData.anonymous ? 'Anonymous User' : user.name,
-          isVerified: !reviewData.anonymous && !!user.isVerified,
-          avatar: reviewData.anonymous ? null : (user.avatar || null)
+          id: user.id || defaultUser.id,
+          name: user.name || defaultUser.name,
+          isVerified: !!user.isVerified,
+          avatar: user.avatar || null,
         },
         rating: reviewData.rating,
         comment: reviewData.comment,
@@ -177,12 +177,12 @@ export const reviewsApi = {
         isHelpfulByCurrentUser: false,
         isNotHelpfulByCurrentUser: false,
         isRecommended: reviewData.rating >= 4,
-        anonymous: !!reviewData.anonymous
-      };
+        anonymous: !!reviewData.anonymous,
+      }
       
       // Add to our in-memory store
       submittedReviews.push(newReview);
-      console.log('API: Submitted review:', newReview);
+      // console.log('API: Submitted review:', newReview);
       
       return newReview;
     } catch (error) {
